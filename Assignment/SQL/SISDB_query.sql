@@ -170,22 +170,23 @@ on s.student_id = e.student_id
 where e.enroll_id is null
 
 --4.
-select s.first_name + s.last_name as student_name , c.course_name from students s join enrollment e 
+select s.first_name as 'first name', s.last_name as 'last name' , c.course_name from students s join enrollment e 
 on s.student_id = e.student_id
 join courses c on c.course_id = e.course_id
+
 
 --5.
 select t.first_name + t.last_name as 'teacher name', c.course_name from teacher t join courses c
 on t.teacher_id = c.teacher_id
 
 --6.
-select s.first_name + s.last_name, c.course_name,e.enroll_date  as 'students' from students s join enrollment e
+select s.first_name + ' ' +s.last_name as 'student name', c.course_name,e.enroll_date from students s join enrollment e
 on s.student_id = e.student_id 
 join courses c on 
 e.course_id = c.course_id
 
 --7.
-select s.first_name + s.last_name as student_name from students s left join payments p 
+select s.first_name +' '+s.last_name as student_name from students s left join payments p 
 on s.student_id = p.student_id 
 where p.payment_id is null
 
