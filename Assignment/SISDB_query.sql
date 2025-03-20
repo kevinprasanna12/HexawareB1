@@ -1,6 +1,7 @@
 --TASK-1
 --1.
 create database SISDB
+use SISDB
 
 --2.
 create table students(
@@ -164,6 +165,45 @@ group by c.course_id,c.course_name
 order by c.course_id
 
 --3.
+select s.first_name + s.last_name as 'students not enrolled' from students s left join enrollment e 
+on s.student_id = e.student_id
+where e.enroll_id is null
+
+--4.
+select s.first_name + s.last_name as student_name , c.course_name from students s join enrollment e 
+on s.student_id = e.student_id
+join courses c on c.course_id = e.course_id
+
+--5.
+select t.first_name + t.last_name as 'teacher name', c.course_name from teacher t join courses c
+on t.teacher_id = c.teacher_id
+
+--6.
+select s.first_name + s.last_name, c.course_name,e.enroll_date  as 'students' from students s join enrollment e
+on s.student_id = e.student_id 
+join courses c on 
+e.course_id = c.course_id
+
+--7.
+select s.first_name + s.last_name as student_name from students s left join payments p 
+on s.student_id = p.student_id 
+where p.payment_id is null
+
+--8.
+select c.course_name as 'course name' from courses c left join enrollment e 
+on c.course_id = e.course_id
+where e.enroll_id is null
+
+--9.
+select a.student_id from enrollment a join enrollment b on 
+a.student_id = b.student_id
+group by a.student_id
+having count(a.course_id) > 1
+ 
+ --10.
+ select t.teacher_id, t.first_name + t.last_name as 'teacher name' from teacher t left join courses c 
+ on t.teacher_id = c.teacher_id
+ where c.course_id is null
 
 
 select * from teacher
