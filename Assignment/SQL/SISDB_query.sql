@@ -196,6 +196,12 @@ on c.course_id = e.course_id
 where e.enroll_id is null
 
 --9.
+--since there is no student have enrolled in 2 courses the output will be empty
+--so lets insert a student having 2 courses
+
+insert enrollment(enroll_id,student_id,course_id,enroll_date) values  --(I used this to improve the query understanding.)
+(212,8,104,'2025-01-28')
+
 select a.student_id from enrollment a join enrollment b on 
 a.student_id = b.student_id
 group by a.student_id
