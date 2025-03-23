@@ -309,8 +309,56 @@ where course_id not in (select course_id from enrollment)
 
 -- all courses have been enrolled hence there is a empty output
 
-/*Q8.Calculate the total payments made by each student for each course they are enrolled in. Use
+/*Q9.Calculate the total payments made by each student for each course they are enrolled in. Use
 subqueries and aggregate functions to sum payments.*/
+insert payments(payment_id,student_id,amount,payment_date) values
+(121,8,4500,'2025-02-04')
+--hence student id 8 has enrolled in other course we insert his payment details 
+select e.student_id,e.course_id ,
+	(select sum(p.amount) from payments p where p.student_id = e.student_id) from enrollment e
+	group by e.course_id , e.student_id 
+	order by e.course_id
+
+
+
+
+
+/*Q10.10. Identify students who have made more than one payment. Use subqueries and aggregate
+functions to count payments per student and filter for those with counts greater than one.*/
+
+select e.student_id ,
+	(select s.first_name + s.last_name as student_name from students s 
+		where s.student_id = e.student_id), count(e.course_id) as student_count from enrollment e
+		group by e.student_id
+		having count(e.course_id) > 1
+
+/*Q11.Write an SQL query to calculate the total payments made by each student. Join the "Students"
+table with the "Payments" table and use GROUP BY to calculate the sum of payments for each
+student.*/
+
+select s.student_id ,s.first_name+' '+s.last_name as student_name,
+	sum(p.amount) as total_payment from payments p 
+	join students s on s.student_id = p.student_id 
+	group by s.student_id,s.first_name ,s.last_name 
+
+
+
+/*Q12.Retrieve a list of course names along with the count of students enrolled in each course. Use
+JOIN operations between the "Courses" table and the "Enrollments" table and GROUP BY to
+count enrollments.*/
+
+select c.course_name , count(e.student_id) as student_count from courses c 
+join enrollment e on e.course_id = c.course_id 
+group by c.course_name
+
+/*Q13. Calculate the average payment amount made by students. Use JOIN operations between the
+"Students" table and the "Payments" table and GROUP BY to calculate the average.*/
+
+select s.student_id ,s.first_name+' '+s.last_name as student_name,avg(p.amount) as avg_payment 
+	from payments p join students s 
+	on s.student_id = p.student_id 
+	group by s.student_id,s.first_name,s.last_name 
+
 
 
 
