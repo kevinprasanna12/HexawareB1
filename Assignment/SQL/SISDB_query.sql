@@ -46,6 +46,8 @@ create table payments(
 
 --5.
 
+--drop table students
+
 insert Students (student_id, first_name, last_name, date_of_birth, email, phone) values
 (1, 'John', 'Doe', '2000-05-15', 'johndoe@example.com', '9876543210'),
 (2, 'Alice', 'Smith', '1999-08-22', 'alicesmith@example.com', '9876543211'),
@@ -59,6 +61,8 @@ insert Students (student_id, first_name, last_name, date_of_birth, email, phone)
 (10, 'Emily', 'Wilson', '2000-12-01', 'emilywilson@example.com', '9876543219')
 
 
+--drop table teacher
+
 insert teacher (teacher_id, first_name, last_name, email) values
 (10, 'William', 'Clark', 'william.clark@example.com'),
 (20, 'Elizabeth', 'Taylor', 'elizabeth.taylor@example.com'),
@@ -71,6 +75,7 @@ insert teacher (teacher_id, first_name, last_name, email) values
 (90, 'Richard', 'Hall', 'richard.hall@example.com'),
 (100, 'Amanda', 'Young', 'amanda.young@example.com')
 
+--drop table courses
 insert into Courses (course_id, course_name, credits, teacher_id) values
 (101, 'Mathematics', 4, 10),
 (102, 'Physics', 3, 30),
@@ -83,7 +88,8 @@ insert into Courses (course_id, course_name, credits, teacher_id) values
 (109, 'Economics', 3, 100),
 (110, 'Psychology', 3, 80)
 
-insert Enrollment (enroll_id, student_id, course_id, enroll_date) values
+--drop table enrollment
+insert enrollment (enroll_id, student_id, course_id, enroll_date) values
 (201, 1, 101, '2025-01-10'),
 (202, 2, 102, '2025-01-12'),
 (203, 3, 103, '2025-01-15'),
@@ -96,6 +102,7 @@ insert Enrollment (enroll_id, student_id, course_id, enroll_date) values
 (210, 10, 110, '2025-02-01')
 
 
+--drop table payments
 insert into Payments (payment_id, student_id, amount, payment_date) values
 (111, 1, 5000, '2025-01-15'),
 (112, 2, 4800, '2025-01-17'),
@@ -212,9 +219,111 @@ having count(a.course_id) > 1
  on t.teacher_id = c.teacher_id
  where c.course_id is null
 
-
 select * from teacher
 select * from enrollment
+select * from courses
 select * from students
 select * from payments
-select * from courses
+
+
+
+ --Task-4
+
+ /* Q1.Write an SQL query to calculate the average number of students enrolled in each course. Use
+aggregate functions and subqueries to achieve this.*/ 
+
+select avg(student_counts) avg_students from
+	(select course_id , count( student_id) as student_counts from enrollment
+		group by course_id) as avg_student_count 
+ 
+ /* Q2.Identify the student(s) who made the highest payment. Use a subquery to find the maximum
+payment amount and then retrieve the student(s) associated with that amount.*/ 
+
+select * from payments
+where amount = (select max(amount) from payments)
+
+ /* Q3 Retrieve a list of courses with the highest number of enrollments. Use subqueries to find the
+course(s) with the maximum enrollment count.*/
+
+select course_id,course_name,enroll_count from
+	(select c.course_name,c.course_id,count(e.course_id) as enroll_count
+	from courses c join enrollment e on 
+	c.course_id = e.course_id 
+	group by c.course_id , c.course_name ) as course_enroll_list
+	where enroll_count = (select max(enroll_count) from
+			(select count(course_id) as enroll_count from enrollment group by course_id ) as aliasname
+	);
+
+/*select t.teacher_id ,t.first_name,t.Last_name, sum(p.amount) from teacher t join courses c 
+on c.teacher_id = t.teacher_id 
+join enrollment e on e.course_id = c.course_id 
+join students s on s.student_id = e.student_id
+join payments p on p.student_id = s.student_id
+group by t.teacher_id,t.first_name,t.Last_name */
+
+/* Q4. Calculate the total payments made to courses taught by each teacher. Use subqueries to sum
+payments for each teacher's courses.*/
+
+select t.teacher_id , t.first_name + t.last_name as teacher_name, 
+       (select sum(p.amount)
+        from payments p 
+        where p.student_id in 
+            (select e.student_id 
+             from enrollment e 
+             where e.course_id in 
+                 (select c.course_id 
+                  from courses c 
+                  where c.teacher_id = t.teacher_id))
+       ) as total_payments
+from teacher t;
+
+/* Q5. Identify students who are enrolled in all available courses. Use subqueries to compare a
+student's enrollments with the total number of courses. */
+
+select student_id , count(enroll_id) as total_enroll from enrollment 
+group by student_id 
+having count(enroll_id) = (select count(course_id) from courses)
+
+--no student had enrolled all available course hence the output is empty
+
+/* Q6. Retrieve the names of teachers who have not been assigned to any courses. Use subqueries to
+find teachers with no course assignments.*/
+
+select first_name + ' '+ last_name as teacher_name from teacher 
+where teacher_id not in (select teacher_id from courses)
+
+/* Q7.Calculate the average age of all students. Use subqueries to calculate the age of each student
+based on their date of birth.*/
+
+select avg(student_age) as total_age_avg from 
+	(select datediff(year, date_of_birth , getdate() ) as student_age from students) as avg_age
+
+--datediff(interval,start_date,end_date
+
+
+/*Q8. Identify courses with no enrollments. Use subqueries to find courses without enrollment
+records. */
+
+select course_name from courses 
+where course_id not in (select course_id from enrollment)
+
+-- all courses have been enrolled hence there is a empty output
+
+/*Q8.Calculate the total payments made by each student for each course they are enrolled in. Use
+subqueries and aggregate functions to sum payments.*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
