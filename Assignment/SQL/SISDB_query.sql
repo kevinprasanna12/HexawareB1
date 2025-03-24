@@ -232,15 +232,18 @@ select * from payments
  /* Q1.Write an SQL query to calculate the average number of students enrolled in each course. Use
 aggregate functions and subqueries to achieve this.*/ 
 
-select avg(student_counts) avg_students from
-	(select course_id , count( student_id) as student_counts from enrollment
-		group by course_id) as avg_student_count 
+select course_id , avg(student_counts) as avg_students from 
+	( select course_id,count(e.student_id) as student_counts from enrollment e 
+	group by course_id) as avg_student 
+group by course_id
+
  
  /* Q2.Identify the student(s) who made the highest payment. Use a subquery to find the maximum
 payment amount and then retrieve the student(s) associated with that amount.*/ 
 
 select * from payments
 where amount = (select max(amount) from payments)
+
 
  /* Q3 Retrieve a list of courses with the highest number of enrollments. Use subqueries to find the
 course(s) with the maximum enrollment count.*/
