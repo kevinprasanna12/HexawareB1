@@ -142,7 +142,7 @@ update Suspect set sus_age = 34 where SuspectID = 3
 update Suspect set sus_age = 49 where SuspectID = 2
 update Suspect set sus_age = 26 where SuspectID = 1
 
-select c.incidenttype ,c.IncidentDate from crime c 
+select c.* from crime c 
 join Suspect s on s.CrimeID = c.CrimeID 
 join Victim v on v.CrimeID = s.CrimeID
 where s.sus_age > v.vic_age
