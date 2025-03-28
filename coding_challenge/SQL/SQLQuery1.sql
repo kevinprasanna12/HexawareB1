@@ -83,7 +83,7 @@ select avg(vic_age) as average_age from Victim
 --Q7
 select incidenttype, count(incidenttype) as incident_count from crime 
 group by IncidentType ,Cr_Status
-having Cr_Status = 'open' 
+having Cr_Status = 'open'	
 
 
 --Q8
@@ -99,15 +99,15 @@ where c.Cr_Status = 'open' or c.Cr_Status = 'closed'
 
 select c.incidenttype from crime c join Victim v
 on c.CrimeID = v.CrimeID 
-where v.vic_age = 30 or v.vic_age = 35 
+where v.vic_age = 30 or v.vic_age = 35	
 
+--v.vic_age = 34 we can get o/p
 --there is no person age is involved in 30 or 35 hence there is no output  
 
 --Q11
 
-select v.* from Victim v join Crime c on c.CrimeID = v.CrimeID 
+select v.* from Victim v join Crime c on c.CrimeID = v.CrimeID  
 where c.Incidenttype = 'robbery'
-
 
 --Q12
 
@@ -169,7 +169,8 @@ where IncidentType = 'robbery' or
 
 --Q19
 
-select c.*,s.SuspectID,s.Sus_Name ,s.Sus_Description ,s.sus_age from crime c join Suspect s 
+select c.*,s.SuspectID,s.Sus_Name ,s.Sus_Description ,s.sus_age from crime c 
+join Suspect s 
 on s.CrimeID = c.CrimeID 
 
 --Q20

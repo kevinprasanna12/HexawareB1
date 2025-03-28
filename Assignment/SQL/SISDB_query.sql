@@ -301,7 +301,7 @@ based on their date of birth.*/
 select avg(student_age) as total_age_avg from 
 	(select datediff(year, date_of_birth , getdate() ) as student_age from students) as avg_age
 
---datediff(interval,start_date,end_date
+--datediff(interval,start_date,end_date)
 
 
 /*Q8. Identify courses with no enrollments. Use subqueries to find courses without enrollment
@@ -361,9 +361,6 @@ select s.student_id ,s.first_name+' '+s.last_name as student_name,avg(p.amount) 
 	from payments p join students s 
 	on s.student_id = p.student_id 
 	group by s.student_id,s.first_name,s.last_name 
-
-
-
 
 
 
