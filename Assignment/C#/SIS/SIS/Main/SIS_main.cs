@@ -12,8 +12,11 @@ namespace SIS.Main
 {
     public class SIS_main
     {
-        static ISIS_Service sis = new SIS_ServiceImpl();
-
+        static IStudent_operation student = new SIS_ServiceImpl();
+        static ICourse_operation course = new SIS_ServiceImpl();
+        static ITeacher_operation teacher = new SIS_ServiceImpl();
+        static IEnrollment_operation enroll = new SIS_ServiceImpl();
+        static IPayment_operation payment = new SIS_ServiceImpl();
         public static void Main(string[] args)
         {
             try
@@ -41,7 +44,8 @@ namespace SIS.Main
                 Console.WriteLine("3. Teacher Management");
                 Console.WriteLine("4. Enrollment Management");
                 Console.WriteLine("5. Payment Management");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("6. Enrollment report generator");
+                Console.WriteLine("7. Exit");
                 Console.Write("Enter your choice: ");
 
                 string choice = Console.ReadLine();
@@ -64,10 +68,13 @@ namespace SIS.Main
                         Showpaymentmenu();
                         break;
                     case "6":
+                        Showreport();
+                        break;
+                    case "7":
                         return;
                     default:
                         Console.WriteLine("Invalid input. Please try again");
-                        Console.ReadKey();
+                        Console.ReadLine();
                         break;
 
                 }
@@ -99,7 +106,7 @@ namespace SIS.Main
                         {
                             Console.WriteLine("enter student id");
                             int stud_id = Convert.ToInt32(Console.ReadLine());
-                            sis.DisplayStudentInfo(stud_id);
+                            student.DisplayStudentInfo(stud_id);
                         }
                         catch (StudentNotFoundException ex)
                         {
@@ -123,7 +130,7 @@ namespace SIS.Main
                             Console.WriteLine("Enter phone :");
                             string phone = Console.ReadLine();
 
-                            sis.UpdateStudentInfo(studentid, firstname, lastname, studdate, email, phone);
+                            student.UpdateStudentInfo(studentid, firstname, lastname, studdate, email, phone);
                             Console.WriteLine("Student updated successfully..");
                         }
                         catch (InvalidStudentDataException ex)
@@ -136,13 +143,13 @@ namespace SIS.Main
                     case "3":
                         try
                         {
-                            Console.WriteLine("Enter enroll id(eg:213 or 217)");
+                            Console.WriteLine("Enter enroll id : ");
                             int enroll_id = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine("Enter the studentid to enroll :");
                             int stud_id = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine("Enter the course id to enroll :");
                             int courseid = Convert.ToInt32(Console.ReadLine());
-                            sis.EnrollInCourse(enroll_id, stud_id, courseid);
+                            student.EnrollInCourse(enroll_id, stud_id, courseid);
                             Console.WriteLine("Student enrolled successfully");
                         }
                         catch (InvalidEnrollmentDataException ex)
@@ -156,7 +163,7 @@ namespace SIS.Main
                         {
                             Console.WriteLine("Enter student name :");
                             string stud_name = Console.ReadLine();
-                            sis.GetEnrolledCourses(stud_name);
+                            student.GetEnrolledCourses(stud_name);
                         }
                         catch (CourseNotFoundException ex)
                         {
@@ -170,7 +177,7 @@ namespace SIS.Main
                             Console.WriteLine("Enter student name: ");
                             string stud_name = Console.ReadLine();
 
-                            sis.GetPaymentHistory(stud_name);
+                            student.GetPaymentHistory(stud_name);
                         }
                         catch (PaymentValidationException ex)
                         {
@@ -182,6 +189,7 @@ namespace SIS.Main
                         return;
                     default:
                         Console.WriteLine("Invalid choice...please enter correct input");
+                        Console.ReadLine();
                         break;
                 }
             }
@@ -213,7 +221,7 @@ namespace SIS.Main
                         {
                             Console.WriteLine("Enter course name");
                             string coursename = Console.ReadLine();
-                            sis.DisplayCourseInfo(coursename);
+                            course.DisplayCourseInfo(coursename);
                         }
                         catch (CourseNotFoundException ex)
                         {
@@ -227,7 +235,7 @@ namespace SIS.Main
                         {
                             Console.WriteLine("Enter Course name:");
                             string cname = Console.ReadLine();
-                            sis.GetEnrollments(cname);
+                            course.GetEnrollments(cname);
                         }
                         catch (CourseNotFoundException ex)
                         {
@@ -242,7 +250,7 @@ namespace SIS.Main
                             int teacher_id = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine("Enter course id to assign:");
                             int courseid = Convert.ToInt32(Console.ReadLine());
-                            sis.AssignTeacher(teacher_id, courseid);
+                            course.AssignTeacher(teacher_id, courseid);
                         }
                         catch (TeacherNotFoundException ex)
                         {
@@ -255,7 +263,7 @@ namespace SIS.Main
                         {
                             Console.WriteLine("Enter Course name");
                             string course_name = Console.ReadLine();
-                            sis.Getteacher(course_name);
+                            course.Getteacher(course_name);
                         }
                         catch (InvalidTeacherDataException e)
                         {
@@ -275,7 +283,7 @@ namespace SIS.Main
                             Console.WriteLine("Enter the new credit:");
                             int credits = Convert.ToInt32(Console.ReadLine());
 
-                            sis.Updatecourseinfo(Coursename, teacherid, course_id, credits);
+                            course.Updatecourseinfo(Coursename, teacherid, course_id, credits);
                         }
                         catch (InvalidCourseDataException ex)
                         {
@@ -287,6 +295,7 @@ namespace SIS.Main
                         return;
                     default:
                         Console.WriteLine("Invalid input....please try again");
+                        Console.ReadLine();
                         break;
 
 
@@ -300,11 +309,13 @@ namespace SIS.Main
             while (true)
             {
                 Console.Clear();
+                Console.WriteLine("Teacher Managment");
                 Console.WriteLine("===================");
                 Console.WriteLine("1.Display teacher details");
                 Console.WriteLine("2.Update teacher details");
                 Console.WriteLine("3.Teacher assigned courses");
-                Console.WriteLine("4.Exit");
+                Console.WriteLine("4.Add a teacher");
+                Console.WriteLine("5.Exit");
                 Console.WriteLine("Enter your choice :");
                 string choice = Console.ReadLine();
 
@@ -315,7 +326,7 @@ namespace SIS.Main
                         {
                             Console.WriteLine("Enter Teacher name :");
                             string teacher_name = Console.ReadLine();
-                            sis.Displayteacherinfo(teacher_name);
+                            teacher.Displayteacherinfo(teacher_name);
                         }
                         catch (TeacherNotFoundException e)
                         {
@@ -335,7 +346,7 @@ namespace SIS.Main
                             Console.WriteLine("Enter new email:");
                             string email = Console.ReadLine();
 
-                            sis.UpdateTeacherinfo(teacherid, first_name, last_name, email);
+                            teacher.UpdateTeacherinfo(teacherid, first_name, last_name, email);
                         }
                         catch (InvalidTeacherDataException e)
                         {
@@ -348,7 +359,7 @@ namespace SIS.Main
                         {
                             Console.WriteLine("Enter teacher id:");
                             int teacherid = Convert.ToInt32(Console.ReadLine());
-                            sis.GetAssignedCourse(teacherid);
+                            teacher.GetAssignedCourse(teacherid);
                         }
                         catch (TeacherNotFoundException e)
                         {
@@ -356,7 +367,27 @@ namespace SIS.Main
                             Console.ReadLine();
                         }
                         break;
-                    case "4":
+                    
+                     case "4":
+                        try
+                        {
+                            Console.WriteLine("Enter teacher id");
+                            int teacherid = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("Enter first name:");
+                            string first_name = Console.ReadLine();
+                            Console.WriteLine("Enter last name");
+                            string last_name = Console.ReadLine();
+                            Console.WriteLine("Enter email:");
+                            string email = Console.ReadLine();
+                            teacher.AddnewTeacher(teacherid, first_name, last_name, email);
+                        }
+                        catch(InvalidTeacherDataException e)
+                        {
+                            Console.WriteLine($"Error: {e.Message}");
+                        }
+                        break ;
+
+                    case "5":
                         return;
                     default:
                         Console.WriteLine("Invalid input....please try again");
@@ -372,6 +403,8 @@ namespace SIS.Main
             while (true)
             {
                 Console.Clear();
+                Console.WriteLine("Enrollment Management");
+                Console.WriteLine("=======================");
                 Console.WriteLine("1.Students Enrollment");
                 Console.WriteLine("2.Course Enrollments");
                 Console.WriteLine("3.Exit");
@@ -383,10 +416,12 @@ namespace SIS.Main
                     case "1":
                         try
                         {
-                            Console.WriteLine("Enter student name:");
+                            Console.WriteLine("Enter student first name:");
                             string stud_name = Console.ReadLine();
+                            Console.WriteLine("Enter last name:");
+                            string lastname = Console.ReadLine();
 
-                            sis.GetStudent(stud_name);
+                            enroll.GetStudent(stud_name,lastname);
                         }
                         catch (StudentNotFoundException e)
                         {
@@ -399,7 +434,7 @@ namespace SIS.Main
                         {
                             Console.WriteLine("Enter Enroll id :");
                             int enroll_id = Convert.ToInt32(Console.ReadLine());
-                            sis.GetCourse(enroll_id);
+                            enroll.GetCourse(enroll_id);
                         }
                         catch (InvalidEnrollmentDataException e)
                         {
@@ -411,6 +446,7 @@ namespace SIS.Main
                         return;
                     default:
                         Console.WriteLine("Invalid input.....please try again");
+                        Console.ReadLine();
                         break;
                 }
 
@@ -423,10 +459,13 @@ namespace SIS.Main
             while (true)
             {
                 Console.Clear();
+                Console.WriteLine("Payment Managment");
+                Console.WriteLine("=======================");
                 Console.WriteLine("1.payment details of a student");
                 Console.WriteLine("2.Total payment of student");
                 Console.WriteLine("3.Payment date");
-                Console.WriteLine("4.Exit");
+                Console.WriteLine("4.Make Payment");
+                Console.WriteLine("5.Exit");
                 Console.WriteLine("Enter your choice:");
 
                 string choice = Console.ReadLine();
@@ -437,7 +476,7 @@ namespace SIS.Main
                         {
                             Console.WriteLine("Enter the Payment id");
                             int pid = Convert.ToInt32(Console.ReadLine());
-                            sis.GetStudent(pid);
+                            payment.GetStudent(pid);
                         }
                         catch (StudentNotFoundException e)
                         {
@@ -450,7 +489,7 @@ namespace SIS.Main
                         {
                             Console.WriteLine("Enter student id:");
                             int stud_id = Convert.ToInt32(Console.ReadLine());
-                            sis.GetpaymentAmount(stud_id);
+                            payment.GetpaymentAmount(stud_id);
                         }
                         catch (InsufficientFundsException e)
                         {
@@ -463,7 +502,7 @@ namespace SIS.Main
                         {
                             Console.WriteLine("Enter payment id:");
                             int paymentid = Convert.ToInt32(Console.ReadLine());
-                            sis.GetpaymentAmount(paymentid);
+                            payment.GetpaymentAmount(paymentid);
                         }
                         catch (PaymentValidationException e)
                         {
@@ -472,12 +511,42 @@ namespace SIS.Main
                         }
                         break;
                     case "4":
+                        try
+                        {
+                            Console.WriteLine("Enter payment id:");
+                            string paymentid = Console.ReadLine();
+                            Console.WriteLine("Enter student id:");
+                            string studid = Console.ReadLine();
+                            Console.WriteLine("Enter the amount");
+                            string amount = Console.ReadLine();
+                            Console.WriteLine("Enter the date");
+                            string date = Console.ReadLine();
+                            payment.MakePayment(paymentid, studid, amount,date);
+                        }
+                        catch(InsufficientFundsException e)
+                        {
+                            Console.WriteLine($"Error :{e.Message}");
+                        }
+                        break;
+                    case "5":
                         return;
                     default:
                         Console.WriteLine("Invalid input....please try again");
+                        Console.ReadLine();
                         break;
                 }
             }
+        }
+        public static void Showreport()
+        {
+            Console.Clear();
+            Console.WriteLine("=======================");
+            Console.WriteLine("Enter the course name :");
+            string coursename = Console.ReadLine();
+            Console.WriteLine("------------------------------");
+            Console.WriteLine($"--{coursename} REPORT--");
+            enroll.ReportGeneration(coursename);
+            
         }
 
     }

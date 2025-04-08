@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
@@ -9,7 +10,7 @@ using SIS.Util;
 
 namespace SIS.Dao
 {
-    public class SIS_ServiceImpl : ISIS_Service
+    public class SIS_ServiceImpl : IStudent_operation,ICourse_operation,ITeacher_operation,IEnrollment_operation,IPayment_operation
     {
         static SqlConnection con = null;
         static SqlCommand cmd;
@@ -63,6 +64,7 @@ namespace SIS.Dao
                 {
                     Console.WriteLine("Updated successfully...");
                 }
+                Console.ReadLine();
                 con.Close();
             }
         }
@@ -156,11 +158,37 @@ namespace SIS.Dao
                 }
             }
             else
-                throw new MY_Exception.PaymentValidationException();
+                throw new MY_Exception.InvalidStudentDataException();
 
             Console.ReadLine();
             con.Close();
         }
+
+        //--------------teacher-----------------------------
+        public void AddnewTeacher(int teacherid, string first_name, string last_name, string email)
+        {
+            using (SqlConnection con = DBConnUtil.GetConnection(DBConnUtil.ConnectionString))
+            {
+                con.Open();
+                cmd = new SqlCommand("Insert teacher(teacher_id,first_name,last_name,email) values (@tid,@fname,@lname,@email)",con);
+                cmd.Parameters.AddWithValue("@fname", first_name);
+                cmd.Parameters.AddWithValue("@lname", last_name);
+                cmd.Parameters.AddWithValue("@tid", teacherid);
+                cmd.Parameters.AddWithValue("@email", email);
+
+                int result = cmd.ExecuteNonQuery();
+                if (result == 0)
+                {
+                    throw new MY_Exception.InvalidTeacherDataException();   
+                }
+                Console.WriteLine("Added successfully....");
+                Console.ReadLine();
+                
+                con.Close();
+            }
+        }
+
+
         public void AssignTeacher(int teacherid, int courseid)
         {
             using (SqlConnection con = DBConnUtil.GetConnection(DBConnUtil.ConnectionString))
@@ -170,9 +198,13 @@ namespace SIS.Dao
                 cmd.Parameters.AddWithValue("@teacherid", teacherid);
                 cmd.Parameters.AddWithValue("@courseid", courseid);
 
-                cmd.ExecuteNonQuery();
-
-                Console.WriteLine("Assiggned successfully...");
+                int result=cmd.ExecuteNonQuery();
+                if(result == 0)
+                {
+                    throw new MY_Exception.InvalidTeacherDataException();
+                }
+                else 
+                    Console.WriteLine("Assiggned successfully...");
                 Console.ReadLine();
 
             }
@@ -297,8 +329,9 @@ namespace SIS.Dao
                 else
                     Console.WriteLine("Course updated successfully...");
 
-                con.Close();
                 Console.ReadLine();
+                con.Close();
+              
             }
         }
         public void UpdateTeacherinfo(int teacherid, string first_name, string last_name, string email)
@@ -351,12 +384,13 @@ namespace SIS.Dao
 
                         }
                     }
-                    Console.ReadLine();
+                   
                 }
                 else
                 {
                     throw new MY_Exception.TeacherNotFoundException();
                 }
+                Console.ReadLine();
                 dr.Close();
                 con.Close();
             }
@@ -383,48 +417,57 @@ namespace SIS.Dao
                             Console.WriteLine($"{columnName}: {value}");
 
                         }
-                        Console.ReadLine();
+                        
                     }
                 }
                 else
                     throw new MY_Exception.CourseNotFoundException();
+                Console.ReadLine();
                 dr.Close();
                 con.Close();
             }
 
         }
-        public void GetStudent(string studentname)
+        public void GetStudent(string studentname,string lastname)
         {
             using (SqlConnection con = DBConnUtil.GetConnection(DBConnUtil.ConnectionString))
             {
                 con.Open();
                 cmd = new SqlCommand("select e.* from enrollment e join students s " +
                     "on s.student_id = e.student_id " +
-                    "where s.first_name = @studentname", con);
+                    "where s.first_name = @studentname and s.last_name= @Lastname", con);
                 cmd.Parameters.AddWithValue("@studentname", studentname);
+                cmd.Parameters.AddWithValue("@Lastname", lastname);
                 if (studentname.Contains(" "))
                 {
                     Console.WriteLine("Enter first name only.....avoid spaces");
                     return;
                 }
                 dr = cmd.ExecuteReader();
+                int count = 1;
                 if (dr.HasRows)
                 {
                     while (dr.Read())
                     {
+                        Console.WriteLine($"{count}.");
                         for (int i = 0; i < dr.FieldCount; i++)
                         {
                             string columnName = dr.GetName(i);
                             object value = dr.GetValue(i);
                             Console.WriteLine($"{columnName}: {value}");
                         }
+                        
+                        Console.WriteLine("---------------------------");
+                        count++;
                     }
-                    Console.ReadLine();
+                   
                 }
                 else
                 {
                     throw new MY_Exception.StudentNotFoundException();
                 }
+                Console.ReadLine();
+                con.Close();
             }
         }
         public void GetCourse(int enrollid)
@@ -445,13 +488,14 @@ namespace SIS.Dao
                             object value = dr.GetValue(i);
                             Console.WriteLine($"{columnName}: {value}");
                         }
-                        Console.ReadLine();
+                        
                     }
                 }
                 else
                 {
                     throw new MY_Exception.InvalidEnrollmentDataException();
                 }
+                Console.ReadLine();
                 dr.Close();
                 con.Close();
             }
@@ -480,9 +524,10 @@ namespace SIS.Dao
                 {
                     throw new MY_Exception.StudentNotFoundException();
                 }
+                Console.ReadLine();
                 dr.Close();
                 con.Close();
-                Console.ReadLine();
+                
             }
         }
         public void GetpaymentAmount(int studid)
@@ -503,7 +548,7 @@ namespace SIS.Dao
                             object value = dr.GetValue(i);
                             Console.WriteLine($"{columnName}: {value}");
                         }
-                        Console.ReadLine();
+                       
 
                     }
                 }
@@ -511,6 +556,7 @@ namespace SIS.Dao
                 {
                     throw new MY_Exception.InsufficientFundsException();
                 }
+                Console.ReadLine();
                 con.Close();
             }
         }
@@ -538,6 +584,61 @@ namespace SIS.Dao
                 {
                     throw new MY_Exception.PaymentValidationException();
                 }
+                Console.Read();
+                con.Close();
+            }
+        }
+        public void MakePayment(string paymentid, string studid, string amount, string date)
+        {
+            using (SqlConnection con = DBConnUtil.GetConnection(DBConnUtil.ConnectionString))
+            {
+                con.Open();
+                cmd = new SqlCommand("Insert payments (payment_id,student_id,amount,payment_date) values (@pid,@sid,@amount,@date)", con);
+                cmd.Parameters.AddWithValue("pid",paymentid);
+                cmd.Parameters.AddWithValue("sid",studid);
+                cmd.Parameters.AddWithValue("amount",amount);
+                cmd.Parameters.AddWithValue("date",date);
+
+                int result = cmd.ExecuteNonQuery();
+                if (result == 0)
+                {
+                    throw new MY_Exception.PaymentValidationException();
+                }
+                else
+                    Console.WriteLine("Payment successfull....");
+                Console.ReadLine();
+                con.Close();
+            }
+        }
+        public void ReportGeneration(string coursename)
+        {
+            using (SqlConnection con = DBConnUtil.GetConnection(DBConnUtil.ConnectionString))
+            {
+                con.Open();
+                cmd = new SqlCommand("select s.first_name + ' ' +s.last_name as Student_Name ,e.enroll_id,e.enroll_date,s.email,s.phone,s.date_of_birth from students s " +
+                    "join enrollment e on e.student_id = s.student_id join courses c on e.course_id = c.course_id " +
+                    "where c.course_name = @coursename", con);
+                cmd.Parameters.AddWithValue("@coursename",coursename);
+
+                dr= cmd.ExecuteReader();
+                if (dr.HasRows)
+                {
+                    while(dr.Read())
+                    {
+                        for (int i = 0; i < dr.FieldCount; i++)
+                        {
+                            string columnName = dr.GetName(i);
+                            object value = dr.GetValue(i);
+                            Console.WriteLine($"{columnName}: {value}");
+                           
+                        }
+                        Console.WriteLine("--------------------------------");
+                    }
+                }
+                else
+                    throw new MY_Exception.InvalidEnrollmentDataException();
+                
+                Console.ReadLine ();
                 con.Close();
             }
         }
