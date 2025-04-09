@@ -1,0 +1,190 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\C# sample\\OrderManagement\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|d:\\c# sample\\ordermanagement\\ordermanagement\\main\\mainmodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|solutionrelative:ordermanagement\\main\\mainmodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|d:\\c# sample\\ordermanagement\\ordermanagement\\dao\\iordermanagementrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|solutionrelative:ordermanagement\\dao\\iordermanagementrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|d:\\c# sample\\ordermanagement\\ordermanagement\\dao\\orderprocessor..cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|solutionrelative:ordermanagement\\dao\\orderprocessor..cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|d:\\c# sample\\ordermanagement\\ordermanagement\\model\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|solutionrelative:ordermanagement\\model\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|d:\\c# sample\\ordermanagement\\ordermanagement\\model\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|solutionrelative:ordermanagement\\model\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|d:\\c# sample\\ordermanagement\\ordermanagement\\model\\electronics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|solutionrelative:ordermanagement\\model\\electronics.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|d:\\c# sample\\ordermanagement\\ordermanagement\\model\\clothing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|solutionrelative:ordermanagement\\model\\clothing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|d:\\c# sample\\ordermanagement\\ordermanagement\\util\\dbconnutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|solutionrelative:ordermanagement\\util\\dbconnutil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|d:\\c# sample\\ordermanagement\\ordermanagement\\exceptions\\my_exceptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|solutionrelative:ordermanagement\\exceptions\\my_exceptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|d:\\c# sample\\ordermanagement\\ordermanagement\\ordermanagement.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{4BB3218E-7234-46E4-A28B-92B42578FAB6}|OrderManagement\\OrderManagement.csproj|solutionrelative:ordermanagement\\ordermanagement.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IOrderManagementRepository.cs",
+              "DocumentMoniker": "D:\\C# sample\\OrderManagement\\OrderManagement\\Dao\\IOrderManagementRepository.cs",
+              "RelativeDocumentMoniker": "OrderManagement\\Dao\\IOrderManagementRepository.cs",
+              "ToolTip": "D:\\C# sample\\OrderManagement\\OrderManagement\\Dao\\IOrderManagementRepository.cs",
+              "RelativeToolTip": "OrderManagement\\Dao\\IOrderManagementRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T06:22:33.997Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Clothing.cs",
+              "DocumentMoniker": "D:\\C# sample\\OrderManagement\\OrderManagement\\Model\\Clothing.cs",
+              "RelativeDocumentMoniker": "OrderManagement\\Model\\Clothing.cs",
+              "ToolTip": "D:\\C# sample\\OrderManagement\\OrderManagement\\Model\\Clothing.cs",
+              "RelativeToolTip": "OrderManagement\\Model\\Clothing.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T06:17:27.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Electronics.cs",
+              "DocumentMoniker": "D:\\C# sample\\OrderManagement\\OrderManagement\\Model\\Electronics.cs",
+              "RelativeDocumentMoniker": "OrderManagement\\Model\\Electronics.cs",
+              "ToolTip": "D:\\C# sample\\OrderManagement\\OrderManagement\\Model\\Electronics.cs",
+              "RelativeToolTip": "OrderManagement\\Model\\Electronics.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T06:15:58.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Product.cs",
+              "DocumentMoniker": "D:\\C# sample\\OrderManagement\\OrderManagement\\Model\\Product.cs",
+              "RelativeDocumentMoniker": "OrderManagement\\Model\\Product.cs",
+              "ToolTip": "D:\\C# sample\\OrderManagement\\OrderManagement\\Model\\Product.cs",
+              "RelativeToolTip": "OrderManagement\\Model\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T06:15:14.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\C# sample\\OrderManagement\\OrderManagement\\Model\\User.cs",
+              "RelativeDocumentMoniker": "OrderManagement\\Model\\User.cs",
+              "ToolTip": "D:\\C# sample\\OrderManagement\\OrderManagement\\Model\\User.cs",
+              "RelativeToolTip": "OrderManagement\\Model\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T06:13:48.708Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DBConnutil.cs",
+              "DocumentMoniker": "D:\\C# sample\\OrderManagement\\OrderManagement\\Util\\DBConnutil.cs",
+              "RelativeDocumentMoniker": "OrderManagement\\Util\\DBConnutil.cs",
+              "ToolTip": "D:\\C# sample\\OrderManagement\\OrderManagement\\Util\\DBConnutil.cs",
+              "RelativeToolTip": "OrderManagement\\Util\\DBConnutil.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAB8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T06:12:00.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainModule.cs",
+              "DocumentMoniker": "D:\\C# sample\\OrderManagement\\OrderManagement\\Main\\MainModule.cs",
+              "RelativeDocumentMoniker": "OrderManagement\\Main\\MainModule.cs",
+              "ToolTip": "D:\\C# sample\\OrderManagement\\OrderManagement\\Main\\MainModule.cs",
+              "RelativeToolTip": "OrderManagement\\Main\\MainModule.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAD4v1kAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T05:45:33.37Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrderProcessor..cs",
+              "DocumentMoniker": "D:\\C# sample\\OrderManagement\\OrderManagement\\Dao\\OrderProcessor..cs",
+              "RelativeDocumentMoniker": "OrderManagement\\Dao\\OrderProcessor..cs",
+              "ToolTip": "D:\\C# sample\\OrderManagement\\OrderManagement\\Dao\\OrderProcessor..cs",
+              "RelativeToolTip": "OrderManagement\\Dao\\OrderProcessor..cs",
+              "ViewState": "AgIAALEAAAAAAAAAAAAowA4AAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T06:31:30.388Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MY_Exceptions.cs",
+              "DocumentMoniker": "D:\\C# sample\\OrderManagement\\OrderManagement\\Exceptions\\MY_Exceptions.cs",
+              "RelativeDocumentMoniker": "OrderManagement\\Exceptions\\MY_Exceptions.cs",
+              "ToolTip": "D:\\C# sample\\OrderManagement\\OrderManagement\\Exceptions\\MY_Exceptions.cs",
+              "RelativeToolTip": "OrderManagement\\Exceptions\\MY_Exceptions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T06:19:52.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "OrderManagement",
+              "DocumentMoniker": "D:\\C# sample\\OrderManagement\\OrderManagement\\OrderManagement.csproj",
+              "RelativeDocumentMoniker": "OrderManagement\\OrderManagement.csproj",
+              "ToolTip": "D:\\C# sample\\OrderManagement\\OrderManagement\\OrderManagement.csproj",
+              "RelativeToolTip": "OrderManagement\\OrderManagement.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-09T05:34:59.622Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
