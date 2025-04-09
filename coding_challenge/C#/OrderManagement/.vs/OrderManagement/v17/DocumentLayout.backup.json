@@ -50,29 +50,16 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "OrderProcessor..cs",
-              "DocumentMoniker": "D:\\C# sample\\OrderManagement\\OrderManagement\\Dao\\OrderProcessor..cs",
-              "RelativeDocumentMoniker": "OrderManagement\\Dao\\OrderProcessor..cs",
-              "ToolTip": "D:\\C# sample\\OrderManagement\\OrderManagement\\Dao\\OrderProcessor..cs",
-              "RelativeToolTip": "OrderManagement\\Dao\\OrderProcessor..cs",
-              "ViewState": "AgIAALEAAAAAAAAAAAAowA4AAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T06:31:30.388Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "IOrderManagementRepository.cs",
               "DocumentMoniker": "D:\\C# sample\\OrderManagement\\OrderManagement\\Dao\\IOrderManagementRepository.cs",
               "RelativeDocumentMoniker": "OrderManagement\\Dao\\IOrderManagementRepository.cs",
-              "ToolTip": "D:\\C# sample\\OrderManagement\\OrderManagement\\Dao\\IOrderManagementRepository.cs*",
-              "RelativeToolTip": "OrderManagement\\Dao\\IOrderManagementRepository.cs*",
+              "ToolTip": "D:\\C# sample\\OrderManagement\\OrderManagement\\Dao\\IOrderManagementRepository.cs",
+              "RelativeToolTip": "OrderManagement\\Dao\\IOrderManagementRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-09T06:22:33.997Z",
@@ -149,11 +136,24 @@
               "Title": "MainModule.cs",
               "DocumentMoniker": "D:\\C# sample\\OrderManagement\\OrderManagement\\Main\\MainModule.cs",
               "RelativeDocumentMoniker": "OrderManagement\\Main\\MainModule.cs",
-              "ToolTip": "D:\\C# sample\\OrderManagement\\OrderManagement\\Main\\MainModule.cs*",
-              "RelativeToolTip": "OrderManagement\\Main\\MainModule.cs*",
-              "ViewState": "AgIAAEsAAAAAAAAAAAD4v2kAAABcAAAAAAAAAA==",
+              "ToolTip": "D:\\C# sample\\OrderManagement\\OrderManagement\\Main\\MainModule.cs",
+              "RelativeToolTip": "OrderManagement\\Main\\MainModule.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAD4v1kAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-09T05:45:33.37Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrderProcessor..cs",
+              "DocumentMoniker": "D:\\C# sample\\OrderManagement\\OrderManagement\\Dao\\OrderProcessor..cs",
+              "RelativeDocumentMoniker": "OrderManagement\\Dao\\OrderProcessor..cs",
+              "ToolTip": "D:\\C# sample\\OrderManagement\\OrderManagement\\Dao\\OrderProcessor..cs",
+              "RelativeToolTip": "OrderManagement\\Dao\\OrderProcessor..cs",
+              "ViewState": "AgIAALEAAAAAAAAAAAAowA4AAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-09T06:31:30.388Z",
               "EditorCaption": ""
             },
             {
